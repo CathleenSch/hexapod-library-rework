@@ -5,7 +5,7 @@ class Hexapod {
 public:
 	Hexapod();
 
-	void setupServos();
+	void setupHexapod();
 	void resetLegs();
 	void walkForward();
 	void moveLegBackward(int pos);
