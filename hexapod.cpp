@@ -2,14 +2,16 @@
 #include "Arduino.h"
 #include "servo_angles.h"
 #include "hexapod_config.h"
+#include <Adafruit_NeoPixel.h>
 #include <Servo.h>
+#include <SR04.h>
 
 // {{front_left_bot, front_left_top}, {mid_left_bot, mid_left_top}, {back_left_bot, back_left_top}, {front_right_bot, front_right_top}, {mid_right_bot, mid_right_top}, {back_right_bot, back_right_top}}
 // FL, ML, BL, FR, MR, BR
 Servo head;
 Servo legs[6][2];
 Adafruit_NeoPixel lights = Adafruit_NeoPixel(6, A1, NEO_GRB + NEO_KHZ800);
-
+SR04 sr04 = SR04(pingPin, trigPin);
 
 Hexapod::Hexapod() {}
 
@@ -70,7 +72,7 @@ void Hexapod::walkForward() {
 		legs[5][1].write(angles[5][1] - i);
 	}
 
-	delay(walkingSpeed;
+	delay(walkingSpeed);
 
 	// Lower mid left, front right and back right legs
 	for (int i = 0; i <= 45; i++) {
